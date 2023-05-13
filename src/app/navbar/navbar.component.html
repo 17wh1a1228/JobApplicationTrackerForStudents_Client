@@ -7,6 +7,10 @@
       <a mat-flat-button color="primary" [routerLink]="['/profile']">Profile</a>
       
       <a mat-flat-button color="primary" [routerLink]="['/applications']">Applications</a>
+
+      <span class="separator"></span>
+      <a mat-flat-button *ngIf="!isLoggedIn" color="primary" [routerLink]="['/login']">Login</a>
+      <a mat-flat-button *ngIf="isLoggedIn" color="primary" (click)="onLogout()">Logout</a>
     </mat-toolbar>
   </header>
   
