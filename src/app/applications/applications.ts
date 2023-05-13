@@ -1,4 +1,4 @@
-export interface Country {
+export interface Application {
     jobId: number;
     position: string;
     company: string;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { Applications } from './applications';
+import { Application } from './applications';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environment/environment';
 import { error } from 'console';
@@ -10,10 +10,10 @@ import { error } from 'console';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent {
-  public applications: Applications[] = [];
+  public applications: Application[] = [];
 
   constructor(http: HttpClient) {
-    http.get<Applications[]>(environment.baseUrl + 'api/Applications').subscribe(result => {
+    http.get<Application[]>(environment.baseUrl + 'api/Applications').subscribe(result => {
       this.applications = result;
     }, error => console.error(error));
   }

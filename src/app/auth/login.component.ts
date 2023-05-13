@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from './login-request';
 import { LoginResult } from './login-result';
@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      userName: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+    this.form = new UntypedFormGroup({
+      userName: new UntypedFormControl("", Validators.required),
+      password: new UntypedFormControl("", Validators.required)
     });
   }
 
