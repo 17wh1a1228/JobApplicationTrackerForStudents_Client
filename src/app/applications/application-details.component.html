@@ -1,0 +1,30 @@
+<!-- application-details.component.html -->
+<div class="application-details">
+  <div class="header-container">
+    <h2 class="header">Application Details</h2>
+    <button class="create-button" (click)="goToCreateApplication()">Create</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let application of applications">
+        <td>{{ application.position }}</td>
+        <td>{{ application.company }}</td>
+        <td>{{ application.date | date }}</td>
+        <td>{{ application.status }}</td>
+        <td>
+          <!-- <button (click)="deleteApplication(application.jobId)">Delete</button> -->
+          <button>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<div *ngIf="student" class="container">
+    <h1>Welcome, {{ student.firstName }} {{ student.lastName }}</h1>
+    <!-- <p>Email: {{ student.email }}</p> -->
+  </div>
+  
+  <div *ngIf="!student" class="container">
+    <p>Loading user profile...</p>
+  </div>
+  

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from './login-request';
 import { LoginResult } from './login-result';
 import { AuthService } from './auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Student } from '../profile/students';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +15,13 @@ import { AuthService } from './auth.service';
 export class LoginComponent implements OnInit {
   form!: UntypedFormGroup;
   loginResult!: LoginResult;
+  currentStudentId!: number;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = new UntypedFormGroup({
@@ -34,8 +41,15 @@ export class LoginComponent implements OnInit {
         this.loginResult = result;
         if (result.success) {
           localStorage.setItem(this.authService.tokenKey, result.token);
-          this.router.navigate(["/"]);
-        }
+          this.authService.getUserProfile(this.currentStudentId).subscribe((student: Student) => {
+            this.currentStudentId = student.id; 
+            console.log('Current logged-in student ID:', this.currentStudentId);
+            this.authService.setCurrentStudentId(this.currentStudentId); 
+            this.router.navigate(["/"]);
+          }, (error: any) => {
+            console.log('Error retrieving user profile:', error);
+            this.router.navigate(["/"]);
+          });        }
       },
       error: error => {
         console.log(error);
@@ -44,4 +58,5 @@ export class LoginComponent implements OnInit {
         }
     }});
   }
+
 }

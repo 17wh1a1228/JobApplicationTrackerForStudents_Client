@@ -12,15 +12,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean = false;
   private destroySubject = new Subject();
+  loggedinUser!: string;
 
   constructor(private authService: AuthService,  private router: Router) {
     this.authService.authStatus
     .pipe(takeUntil(this.destroySubject))
     .subscribe(result => {
       this.isLoggedIn = result;
+    },
+    error => {
+      console.error('Error during authentication:', error);
     });
   }
 
+  loggedin() {
+    this.loggedinUser = localStorage.getItem('username') || '';
+    return this.loggedinUser;
+  }
+  
   onLogout() {
     this.authService.logout();
     this.router.navigate(["/"]);

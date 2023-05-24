@@ -1,0 +1,52 @@
+.application-details {
+    margin: 20px;
+  }
+
+  
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  margin-right: 10px; 
+}
+
+.create-button {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  padding: 5px 10px; 
+  margin-left: 10px;
+  font-size: inherit;
+  font-weight: inherit;
+}
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    padding: 4px 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+  
