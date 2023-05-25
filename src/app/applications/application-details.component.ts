@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Application } from '../models/applications';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environment/environment';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ApplicationService } from './application.service';
